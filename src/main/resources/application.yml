@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: bookdb
+  flyway:
+    locations: classpath:/db/migration
+    schemas: bookdb
+    baseline-on-migrate: true
+    enabled: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bookdb?currentSchema=bookdb
+    username: postgres
+    password: postgres

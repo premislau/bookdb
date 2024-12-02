@@ -1,0 +1,1 @@
+insert into books(id, title) values('21d4a260-5eaf-41fe-ad5f-034316e21b31','Test');
