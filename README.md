@@ -1,0 +1,2 @@
+# About project.
+A simple project involving Java, Spring Boot and PostgreSQL database. The database stores information about books and their authors (many-to-many relationship); the project exposes HTTP endpoints allowing for interactions with database. Project is an example of usage of Spring Boot tools such as JPA entities management and Spring Boot Security for security management.
