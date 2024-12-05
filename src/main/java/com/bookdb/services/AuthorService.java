@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -44,6 +45,22 @@ public class AuthorService {
                 .orElseThrow(() -> new EntityNotFoundException("Book not found"));
 
         author.addBook(book);
+        return authorRepository.save(author);
+    }
+
+    public Author addMultipleBooksToAuthor(UUID authorId, List<UUID> bookIds) {
+        Author author = authorRepository.findById(authorId)
+                .orElseThrow(() -> new EntityNotFoundException("Author not found"));
+        List<Book> books = new ArrayList<>(bookIds.size());
+        for(UUID bookId:bookIds) {
+            Book book = bookRepository.findById(bookId)
+                    .orElseThrow(() -> new EntityNotFoundException("Book not found"));
+            books.add(book);
+        }
+        //books are added to the author only if all bookIds are in the database
+        for(Book book:books) {
+            author.addBook(book);
+        }
         return authorRepository.save(author);
     }
 

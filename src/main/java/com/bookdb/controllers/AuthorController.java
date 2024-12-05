@@ -48,9 +48,9 @@ public class AuthorController {
     }
 
     @PostMapping("/{authorId}/books/")
-    public ResponseEntity<?> addBook(@PathVariable UUID authorId, @RequestBody UUID bookId) {
+    public ResponseEntity<?> addMultipleBooks(@PathVariable UUID authorId, @RequestBody List<UUID> bookIds) {
         try {
-            return ResponseEntity.ok().body(authorService.addBookToAuthor(authorId, bookId));
+            return ResponseEntity.ok().body(authorService.addMultipleBooksToAuthor(authorId, bookIds));
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
                     "error", e.getMessage()
