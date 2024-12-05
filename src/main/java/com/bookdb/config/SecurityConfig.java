@@ -12,8 +12,6 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    //CSRF setting are default i.e. token is needed for state-changing HTTP methods
-
     @Bean
     public SecurityFilterChain httpMethods(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.
